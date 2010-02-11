@@ -76,9 +76,10 @@ read_labels()
 
 # Generate features
 for l in all_labels:
-    featurestrainfile = open(join(workdir, "features.train.l2=%s.%s.txt" % (options.l2, l)), "wt")
+    featurestrainfile = join(workdir, "features.train.l2=%s.%s.txt" % (options.l2, l))
+    f = open(featurestrainfile, "wt")
     for query, labels in read_labeled_queries(TRAIN_FILENAME):
-        featurestrainfile.write("%d %s\n" % (l in labels, query))
+        f.write("%d %s\n" % (l in labels, query))
 
     for i in range(len(EVAL_FILENAMES)):
         featuresevalfile = open(join(workdir, "features.eval%d.l2=%s.%s.txt" % (i, options.l2, l)), "wt")
@@ -87,7 +88,7 @@ for l in all_labels:
 
     modelfile = join(workdir, "model.l2=%s.%s.txt" % (options.l2, l))
 
-    cmd = "megam -lambda %s %s > %s" % (options.l2, featurestrainfile, modelfile)
+    cmd = "megam -lambda %s binary %s > %s" % (options.l2, featurestrainfile, modelfile)
     print cmd
 
 #    print labels, query
