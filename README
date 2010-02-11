@@ -63,3 +63,8 @@ Download word representations:
     ln -s hlbl_reps_clean_1.rcv1.clean.tokenized-CoNLL03.case-intact.txt.gz hlbl-embeddings-100dim.txt.gz
     ln -s hlbl_reps_clean_2.50d.rcv1.clean.tokenized-CoNLL03.case-intact.txt.gz hlbl-embeddings-50dim.txt.gz 
 
+
+NOTE
+----
+
+I generate one feature file per l2 parameter. Otherwise, different runs might clobber each other.

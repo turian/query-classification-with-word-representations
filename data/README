@@ -1,0 +1,8 @@
+Here is how I partitioned out 11 queries for dev:
+
+joseph@quim:~/dev/query-classification-with-word-representations-hg/data/train$ cat CategorizedQuerySample.txt | shuffle.sh > CategorizedQuerySample.shuffle.txt 
+joseph@quim:~/dev/query-classification-with-word-representations-hg/data/train$ wc -l CategorizedQuerySample.shuffle.txt
+111 CategorizedQuerySample.shuffle.txt
+joseph@quim:~/dev/query-classification-with-word-representations-hg/data/train$ head -11 CategorizedQuerySample.shuffle.txt > CategorizedQuerySample.dev-partition.txt
+joseph@quim:~/dev/query-classification-with-word-representations-hg/data/train$ tail -100 CategorizedQuerySample.shuffle.txt > CategorizedQuerySample.train-partition.txt
+
