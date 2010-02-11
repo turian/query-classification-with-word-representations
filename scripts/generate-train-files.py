@@ -43,16 +43,6 @@ def read_labels():
         all_labels.append(l)
         origlabel_to_newlabel[origl] = l
 
-
-
-if options.dev: workdir = join(BASEDIR, "work/%s/dev/" % options.name)
-else: workdir = join(BASEDIR, "work/%s/test/" % options.name)
-print >> sys.stderr, "Working in directory: %s" % workdir
-if not os.path.exists(workdir): os.makedirs(workdir)
-assert os.path.isdir(workdir)
-
-read_labels()
-
 def read_labeled_queries(filename):
     """
     Read a labeled queries file.
@@ -66,6 +56,24 @@ def read_labeled_queries(filename):
         examples.append((query, labels))
     return examples
 
+def run(cmd):
+    print >> sys.stderr, cmd
+    print >> sys.stderr, stats()
+    os.system(cmd)
+    print >> sys.stderr, stats()
+
+
+
+
+if options.dev: workdir = join(BASEDIR, "work/%s/dev/" % options.name)
+else: workdir = join(BASEDIR, "work/%s/test/" % options.name)
+print >> sys.stderr, "Working in directory: %s" % workdir
+if not os.path.exists(workdir): os.makedirs(workdir)
+assert os.path.isdir(workdir)
+
+read_labels()
+
+
 # Generate features
 for l in all_labels:
     featurestrainfile = open(join(workdir, "features.train.l2=%s.%s.txt" % (options.l2, l)), "wt")
@@ -76,5 +84,10 @@ for l in all_labels:
         featuresevalfile = open(join(workdir, "features.eval%d.l2=%s.%s.txt" % (i, options.l2, l)), "wt")
         for query, labels in read_labeled_queries(EVAL_FILENAMES[i]):
             featuresevalfile.write("%d %s\n" % (l in labels, query))
+
+    modelfile = join(workdir, "model.l2=%s.%s.txt" % (options.l2, l))
+
+    cmd = "megam -lambda %s %s > %s" % (options.l2, featurestrainfile, modelfile)
+    print cmd
 
 #    print labels, query
