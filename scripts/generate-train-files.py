@@ -4,6 +4,8 @@ TODO: Add different example weighting.
 """
 
 import sys, string
+from common.stats import stats
+
 from os.path import join
 import os.path, os
 from os.path import join
@@ -38,8 +40,11 @@ def read_labels():
     for l in open(CATEGORIES_FILENAME):
         l = string.strip(l)
         origl = l
-        l = string.replace(l, "\\", ":")
+#        l = string.replace(l, "\\", ":")
+        l = string.replace(l, "\\", "_")
+        l = string.replace(l, "=", "_")
         l = string.replace(l, " ", "_")
+        l = string.replace(l, "&", "AND")
         all_labels.append(l)
         origlabel_to_newlabel[origl] = l
 
@@ -73,22 +78,80 @@ assert os.path.isdir(workdir)
 
 read_labels()
 
+target_is_prediction = [0] * len(EVAL_FILENAMES)
+target_is_true = [0] * len(EVAL_FILENAMES)
+prediction_is_true = [0] * len(EVAL_FILENAMES)
 
 # Generate features
 for l in all_labels:
-    featurestrainfile = join(workdir, "features.train.l2=%s.%s.txt" % (options.l2, l))
+    featurestrainfile = join(workdir, "features.train.l2-%s.%s.txt" % (options.l2, l))
     f = open(featurestrainfile, "wt")
     for query, labels in read_labeled_queries(TRAIN_FILENAME):
         f.write("%d %s\n" % (l in labels, query))
+    f.close()
+
+    modelfile = join(workdir, "model.l2-%s.%s.txt" % (options.l2, l))
+    modelerrfile = join(workdir, "model.l2-%s.%s.err" % (options.l2, l))
+
+    cmd = "megam -lambda %s binary %s > %s 2> %s" % (options.l2, featurestrainfile, modelfile, modelerrfile)
+    run(cmd)
 
     for i in range(len(EVAL_FILENAMES)):
-        featuresevalfile = open(join(workdir, "features.eval%d.l2=%s.%s.txt" % (i, options.l2, l)), "wt")
+        featuresevalfile = join(workdir, "features.eval%d.l2-%s.%s.txt" % (i, options.l2, l))
+        f = open(featuresevalfile, "wt")
+        target = []
         for query, labels in read_labeled_queries(EVAL_FILENAMES[i]):
-            featuresevalfile.write("%d %s\n" % (l in labels, query))
+            target.append(int(l in labels))
+            f.write("%d %s\n" % (target[-1], query))
+        f.close()
 
-    modelfile = join(workdir, "model.l2=%s.%s.txt" % (options.l2, l))
+        predictedevalfile = join(workdir, "predicted.eval%d.l2-%s.%s.txt" % (i, options.l2, l))
+        cmd = "megam -predict %s binary %s > %s 2> /dev/null" % (modelfile, featuresevalfile, predictedevalfile)
+        run(cmd)
 
-    cmd = "megam -lambda %s binary %s > %s" % (options.l2, featurestrainfile, modelfile)
-    print cmd
+        predicted = []
+        for p in open(predictedevalfile):
+#            print >> sys.stderr, string.split(p)[0]
+            predicted.append(int(string.split(p)[0]))
 
-#    print labels, query
+        for (t, p) in zip(target, predicted):
+#            print >> sys.stderr, t, p
+            if t == 1 and p == 1: target_is_prediction[i] += 1
+            if t == 1: target_is_true[i] += 1
+            if p == 1: prediction_is_true[i] += 1
+#            print >> sys.stderr, target_is_prediction[i], target_is_true[i], prediction_is_true[i]
+
+scorefile = join(workdir, "evaluation.l2-%s.txt" % (options.l2))
+totprc = 0.
+totrcl = 0.
+totfms = 0.
+for i in range(len(EVAL_FILENAMES)):
+    if prediction_is_true[i] == 0: prc = 0.
+    else: prc = (100. * target_is_prediction[i]/prediction_is_true[i])
+    if target_is_true[i] == 0: rcl = 0.
+    else: rcl = (100. * target_is_prediction[i]/target_is_true[i])
+    if prc + rcl == 0: fms = 0
+    else: fms = 2 * prc * rcl / (prc + rcl)
+
+    print "Precision %d: %.2f" % (i, prc)
+    print "Recall %d: %.2f" % (i, rcl)
+    print "F-measure %d: %.2f" % (i, fms)
+
+    totprc += prc
+    totrcl += rcl
+    totfms += fms
+
+totprc /= len(EVAL_FILENAMES)
+totrcl /= len(EVAL_FILENAMES)
+totfms /= len(EVAL_FILENAMES)
+
+if len(EVAL_FILENAMES) > 1:
+    print "Mean Precision: %.2f" % (totprc)
+    print "Mean Recall: %.2f" % (totrcl)
+    print "Mean F-measure: %.2f" % (totfms)
+
+f = open(scorefile, "wt")
+f.write("Precision: %.2f\n" % (totprc))
+f.write("Recall: %.2f\n" % (totrcl))
+f.write("F-measure: %.2f\n" % (totfms))
+f.close()

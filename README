@@ -25,6 +25,9 @@ Download and install megam:
     http://www.cs.utah.edu/~hal/megam/
 We use the pre-compiled optimized binary version.
 
+You will need my common Python library:
+    http://github.com/turian/common
+
 Download data:
     mkdir data/
     cd data/

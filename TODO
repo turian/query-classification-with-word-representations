@@ -2,7 +2,11 @@
 
 * Try with and without example balancing
 
+* Might also be useful to normalize the query words, based upon their frequency (for the l2 prior)
+
 * Try with and without case sensitivity
 
 * It might be useful to try a different l2 penalty for each class,
 but there just doesn't seem to be enough data.
+
+* 11 dev examples isn't very much, we should average across different dev splits.
