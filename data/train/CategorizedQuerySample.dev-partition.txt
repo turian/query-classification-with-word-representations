@@ -1,11 +1,55 @@
-cingular phones	Computers\Mobile Computing	Computers\Hardware	Shopping\Stores & Products	Information\Companies & Industries	Shopping\Buying Guides & Researching
-hotel rates	Shopping\Stores & Products	Living\Travel & Vacation	Shopping\Buying Guides & Researching	Information\Companies & Industries	
+claim jumper	Information\Companies & Industries	Living\Food & Cooking	Shopping\Stores & Products		
+aldactone	Living\Health & Fitness	Information\Science & Technology	Shopping\Buying Guides & Researching	Shopping\Stores & Products	Information\Companies & Industries
+windows media player	Computers\Multimedia	Computers\Internet & Intranet	Information\Science & Technology	Information\Companies & Industries	Entertainment\Music
+online dating	Online Community\Personal Services	Computers\Internet & Intranet	Living\Dating & Relationships	Information\Arts & Humanities
+NHL allstar	Sports\Hockey	Sports\News & Scores	Sports\Schedules & Tickets	
+discounted coach handbags	Shopping\Bargains & Discounts	Shopping\Stores & Products	Living\Fashion & Apparel	Information\Companies & Industries	
+ibm laptops	Computers\Hardware	Shopping\Buying Guides & Researching	Shopping\Stores & Products	Information\Companies & Industries	
+hair styles for women	Living\Fashion & Apparel	Information\Arts & Humanities	Living\Family & Kids		
+music videos online	Computers\Multimedia	Computers\Internet & Intranet	Entertainment\Music	Information\Arts & Humanities
+nutmeg graters	Living\Tools & Hardware	Living\Food & Cooking	Shopping\Stores & Products	
+indycar	Sports\Auto Racing	Online Community\Homepages	Living\Book & Magazine	Information\Companies & Industries	
+career planning	Living\Career & Jobs	Information\Education			
+virgo	Information\Science & Technology	Information\Arts & Humanities			
+match.com	Information\Companies & Industries	Online Community\Personal Services	Online Community\Homepages	Information\Companies & Industries	Living\Dating & Relationships
+custom christening cakes	Living\Religion & Belief	Living\Food & Cooking	Information\Arts & Humanities	Shopping\Stores & Products	
+amazon rainforest	Information\Science & Technology	Information\Local & Regional 	Information\Law & Politics	Living\Travel & Vacation	Information\Education
+basset hound dogs	Living\Pets & Animals	Information\Science & Technology	Living\Family & Kids	Shopping\Buying Guides & Researching	
+french open	Sports\Tennis	Information\Local & Regional 	Entertainment\Celebrities		
+fifa street	Entertainment\Games & Toys	Sports\Soccer	Information\Arts & Humanities	Shopping\Stores & Products	
+justin timberlake lyrics	Entertainment\Music	Information\Arts & Humanities	Entertainment\Celebrities		
+orlando florida vacation	Living\Travel & Vacation	Information\Local & Regional 	Information\Companies & Industries	Shopping\Buying Guides & Researching
+baby stores	Shopping\Stores & Products	Living\Family & Kids	Information\Companies & Industries		
+mensrings	Living\Gifts & Collectables	Living\Dating & Relationships	Shopping\Buying Guides & Researching	Shopping\Stores & Products	Information\Arts & Humanities
+FIFA 2006	Sports\Soccer	Sports\Schedules & Tickets	Entertainment\Games & Toys	Online Community\Homepages	Information\Local & Regional 
+funny college jokes	Entertainment\Humor & Fun	Information\Education	Information\Arts & Humanities		
 eBay Electronics	Shopping\Auctions & Bids	Computers\Multimedia	Computers\Hardware	Information\Companies & Industries	Shopping\Buying Guides & Researching
-educational journals	Information\Education	Information\References & Libraries	Living\Family & Kids		
-flash flash revolution	Entertainment\Games & Toys	Information\Arts & Humanities	Online Community\Other	Computers\Internet & Intranet	Computers\Multimedia
-dishwashers	Shopping\Stores & Products	Information\Companies & Industries	Shopping\Buying Guides & Researching	Living\Furnishing & Houseware	
-seattle supersonics tickets	Sports\Basketball	Sports\Schedules & Tickets	Information\Local & Regional 	Shopping\Bargains & Discounts	Shopping\Stores & Products
-computer furniture	Living\Furnishing & Houseware	Computers\Other	Shopping\Stores & Products	Information\Companies & Industries	Shopping\Buying Guides & Researching
-salary report	Living\Career & Jobs	Information\Companies & Industries			
+kitchen design pictures	Entertainment\Pictures & Photos	Living\Furnishing & Houseware	Information\Arts & Humanities		
+explorer update	Computers\Internet & Intranet	Computers\Software	Computers\Security	Information\Science & Technology	Information\Companies & Industries
 fantasy basketball cheat	Entertainment\Games & Toys	Sports\Basketball	Online Community\Forums & Groups	Information\Other	
-learn to make puppets	Entertainment\Other	Information\Education	Information\Arts & Humanities		
+tiny clocks	Living\Gifts & Collectables	Information\Arts & Humanities	Information\Science & Technology	Shopping\Stores & Products	
+1967 shelby mustang	Living\Car & Garage	Sports\Auto Racing	Living\Gifts & Collectables	Shopping\Buying Guides & Researching	Information\Companies & Industries
+curb your enthusiasm	Entertainment\TV	Information\Arts & Humanities			
+canister set	Living\Furnishing & Houseware	Living\Food & Cooking	Shopping\Stores & Products	Information\Other	
+msn messenger	Computers\Internet & Intranet	Computers\Software	Online Community\Chat & Instant Messaging	Information\Companies & Industries
+ceramics	Information\Arts & Humanities	Entertainment\Other	Living\Furnishing & Houseware	Living\Gifts & Collectables	Living\Family & Kids
+npr	Entertainment\Radio	Information\Law & Politics	Information\Arts & Humanities	
+auto price	Shopping\Stores & Products	Living\Car & Garage	Shopping\Buying Guides & Researching	Shopping\Bargains & Discounts	Information\Companies & Industries
+canadian newspapers	Information\References & Libraries	Information\Local & Regional 	Information\Law & Politics		
+bank loans	Living\Finance & Investment	Information\Companies & Industries	Shopping\Buying Guides & Researching	Living\Real Estate	
+capt stanman and fishing	Sports\Outdoor Recreations	Living\Travel & Vacation	Information\Local & Regional 		
+cell phone screensavers	Computers\Mobile Computing	Computers\Software	Information\Arts & Humanities	Computers\Other	
+nascar	Sports\Auto Racing	Online Community\Homepages	Sports\Schedules & Tickets	
+cingular phones	Computers\Mobile Computing	Computers\Hardware	Shopping\Stores & Products	Information\Companies & Industries	Shopping\Buying Guides & Researching
+bowling clip art pictures	Entertainment\Pictures & Photos	Sports\Other	Information\Arts & Humanities		
+jackfm	Entertainment\Radio	Entertainment\Music	Information\Companies & Industries	Information\Arts & Humanities	
+ford field	Sports\American Football	Information\Local & Regional 	Sports\Schedules & Tickets		
+dayton police department	Information\Law & Politics	Information\Local & Regional 			
+safeco field	Sports\Baseball	Sports\Schedules & Tickets	Information\Local & Regional 		
+cheesecake recipes	Living\Food & Cooking	Information\Arts & Humanities			
+seattle supersonics tickets	Sports\Basketball	Sports\Schedules & Tickets	Information\Local & Regional 	Shopping\Bargains & Discounts	Shopping\Stores & Products
+greenvillenews	Information\Local & Regional 	Information\References & Libraries	Living\Book & Magazine		
+alfred hitchcock	Entertainment\Movies	Entertainment\TV	Entertainment\Celebrities	Living\Book & Magazine	Entertainment\Games & Toys
+bar exam result	Information\Law & Politics	Living\Career & Jobs	Information\References & Libraries	Information\Education	
+bench grinders	Living\Tools & Hardware	Living\Landscaping & Gardening	Shopping\Stores & Products	Information\Companies & Industries	Shopping\Buying Guides & Researching
+MSN Groups	Online Community\Forums & Groups	Computers\Internet & Intranet	Information\Companies & Industries	Information\References & Libraries
