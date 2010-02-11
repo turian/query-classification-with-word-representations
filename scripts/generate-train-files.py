@@ -54,7 +54,9 @@ for e in open(TRAIN_FILENAME):
     labels = [origlabel_to_newlabel[string.strip(l)] for l in v[1:]]
 
     for l in all_labels:
-        if l in labels: outl = l
-        else: outl = "NOT-%s" % l
+#        if l in labels: outl = l
+#        else: outl = "NOT-%s" % l
+        if l in labels: outl = "1"
+        else: outl = "0"
         label_to_trainfile[l].write("%s %s\n" % (outl, query))
 #    print labels, query

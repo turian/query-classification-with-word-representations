@@ -1,0 +1,11 @@
+cingular phones	Computers\Mobile Computing	Computers\Hardware	Shopping\Stores & Products	Information\Companies & Industries	Shopping\Buying Guides & Researching
+hotel rates	Shopping\Stores & Products	Living\Travel & Vacation	Shopping\Buying Guides & Researching	Information\Companies & Industries	
+eBay Electronics	Shopping\Auctions & Bids	Computers\Multimedia	Computers\Hardware	Information\Companies & Industries	Shopping\Buying Guides & Researching
+educational journals	Information\Education	Information\References & Libraries	Living\Family & Kids		
+flash flash revolution	Entertainment\Games & Toys	Information\Arts & Humanities	Online Community\Other	Computers\Internet & Intranet	Computers\Multimedia
+dishwashers	Shopping\Stores & Products	Information\Companies & Industries	Shopping\Buying Guides & Researching	Living\Furnishing & Houseware	
+seattle supersonics tickets	Sports\Basketball	Sports\Schedules & Tickets	Information\Local & Regional 	Shopping\Bargains & Discounts	Shopping\Stores & Products
+computer furniture	Living\Furnishing & Houseware	Computers\Other	Shopping\Stores & Products	Information\Companies & Industries	Shopping\Buying Guides & Researching
+salary report	Living\Career & Jobs	Information\Companies & Industries			
+fantasy basketball cheat	Entertainment\Games & Toys	Sports\Basketball	Online Community\Forums & Groups	Information\Other	
+learn to make puppets	Entertainment\Other	Information\Education	Information\Arts & Humanities		

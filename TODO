@@ -1,0 +1,8 @@
+* Try different classifiers: svmsgd, vowpal wabbit, SVM with polynomial kernel
+
+* Try with and without example balancing
+
+* Try with and without case sensitivity
+
+* It might be useful to try a different l2 penalty for each class,
+but there just doesn't seem to be enough data.

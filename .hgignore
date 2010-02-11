@@ -1,3 +1,10 @@
-data
 representations
 work/*
+data/test/Labeled800Queries.zip
+data/test/labeler1.txt
+data/test/labeler2.txt
+data/test/labeler3.txt
+data/train/Categories.txt
+data/train/CategorizedQuerySample.txt
+data/train/KDDCUPData.zip
+data/train/Queries.txt
