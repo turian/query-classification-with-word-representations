@@ -20,10 +20,12 @@ parser.add_option("-n", "--name", dest="name", help="Name of this run")
 parser.add_option("--dev", dest="dev", action="store_true", help="Train on train-partition and evaluate on dev-partiton", default=True)
 parser.add_option("--test", dest="dev", action="store_false", help="Train on train and evaluate on dev")
 parser.add_option("--l2", dest="l2", help="l2 sigma", type="string")
-parser.add_option("--balance-examples", dest="balanceexamples", action="store_true", help="Balance weight of positive examples against negative examples", default=False)
+parser.add_option("--dont-balance-examples", dest="balanceexamples", action="store_false", help="Don't balance weight of positive examples against negative examples", default=False)
+parser.add_option("--balance-examples", dest="balanceexamples", action="store_true", help="Balance weight of positive examples against negative examples")
 (options, args) = parser.parse_args()
 assert len(args) == 0
 assert options.name is not None
+assert options.l2 is not None
 
 if options.dev:
     TRAIN_FILENAME = join(BASEDIR, "data/train/CategorizedQuerySample.train-partition.txt")
@@ -89,6 +91,7 @@ prediction_is_true = [0] * len(EVAL_FILENAMES)
 scorefile = join(workdir, "evaluation.l2-%s.txt" % (options.l2))
 if os.path.exists(scorefile):
     print >> sys.stderr, "%s exists. STOPPING" % scorefile
+    sys.exit(1)
 
 # Generate features
 for l in all_labels:
