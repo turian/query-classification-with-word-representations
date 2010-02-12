@@ -20,6 +20,7 @@ parser.add_option("-n", "--name", dest="name", help="Name of this run")
 parser.add_option("--dev", dest="dev", action="store_true", help="Train on train-partition and evaluate on dev-partiton", default=True)
 parser.add_option("--test", dest="dev", action="store_false", help="Train on train and evaluate on dev")
 parser.add_option("--l2", dest="l2", help="l2 sigma", type="string")
+parser.add_option("--balance-examples", dest="balanceexamples", action="store_true", help="Balance weight of positive examples against negative examples", default=False)
 (options, args) = parser.parse_args()
 assert len(args) == 0
 assert options.name is not None
@@ -89,8 +90,21 @@ prediction_is_true = [0] * len(EVAL_FILENAMES)
 for l in all_labels:
     featurestrainfile = join(workdir, "features.train.l2-%s.%s.txt" % (options.l2, l))
     f = open(featurestrainfile, "wt")
+
+    valcnt = [0, 0]
+    if options.balanceexamples:
+        for query, labels in read_labeled_queries(TRAIN_FILENAME):
+            y = int(l in labels)
+            valcnt[y] += 1
+    else:
+        valcnt = [1, 1]
+    weight = [0,0]
+    weight[0] = 1. * valcnt[1] / (valcnt[0] + valcnt[1])
+    weight[1] = 1. * valcnt[0] / (valcnt[0] + valcnt[1])
+    if weight[0] == 0 or weight[1] == 0: weight = [1,1]
     for query, labels in read_labeled_queries(TRAIN_FILENAME):
-        f.write("%d %s\n" % (l in labels, query))
+        y = int(l in labels)
+        f.write("%d $$$WEIGHT %f %s\n" % (y, weight[y], query))
     f.close()
 
     modelfile = join(workdir, "model.l2-%s.%s.txt" % (options.l2, l))
