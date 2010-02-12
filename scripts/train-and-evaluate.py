@@ -5,6 +5,7 @@ TODO: Add different example weighting.
 
 import sys, string
 from common.stats import stats
+from common.file import myopen
 
 from os.path import join
 import os.path, os
@@ -20,6 +21,9 @@ parser.add_option("-n", "--name", dest="name", help="Name of this run")
 parser.add_option("--dev", dest="dev", action="store_true", help="Train on train-partition and evaluate on dev-partiton", default=True)
 parser.add_option("--test", dest="dev", action="store_false", help="Train on train and evaluate on dev")
 parser.add_option("--l2", dest="l2", help="l2 sigma", type="string")
+parser.add_option("-b", "--brown", dest="brown", action="append", help="brown clusters to use")
+parser.add_option("-e", "--embedding", dest="embedding", action="append", help="embedding to use")
+parser.add_option("--brown-prefixes", dest="prefixes", default="4,6,10,20", help="brown prefixes")
 parser.add_option("--dont-balance-examples", dest="balanceexamples", action="store_false", help="Don't balance weight of positive examples against negative examples", default=False)
 parser.add_option("--balance-examples", dest="balanceexamples", action="store_true", help="Balance weight of positive examples against negative examples")
 (options, args) = parser.parse_args()
@@ -64,7 +68,17 @@ def read_labeled_queries(filename):
 #        print >> sys.stderr, query
         labels = [origlabel_to_newlabel[string.strip(l)] for l in v[1:]]
 #        print >> sys.stderr, query, labels
-        examples.append((query, labels))
+        morefeatures = ""
+        for w in string.split(query):
+            for bi in range(len(word_to_cluster)):
+                if w not in word_to_cluster[bi]:
+                    print >> sys.stderr, "Word not in Brown:", w
+                else:
+                    for p in prefixes:
+                        morefeatures += " BROWN.%d.p%d.%s" % (bi, p, word_to_cluster[bi][w][:p])
+#        print >> sys.stderr, query
+#        print >> sys.stderr, morefeatures
+        examples.append((query + " " + morefeatures, labels))
     return examples
 
 def run(cmd):
@@ -74,6 +88,30 @@ def run(cmd):
     print >> sys.stderr, stats()
 
 
+
+prefixes = [int(s) for s in string.split(options.prefixes, sep=",")]
+
+if options.brown is None: options.brown = []
+word_to_cluster = []
+for i, brownfile in enumerate(options.brown):
+    print >> sys.stderr, "Reading Brown file: %s" % brownfile
+    word_to_cluster.append({})
+    assert len(word_to_cluster) == i+1
+    for l in myopen(brownfile):
+        cluster, word, cnt = string.split(l)
+        word_to_cluster[i][word] = cluster
+
+if options.embedding is None: options.embedding = []
+word_to_embedding = []
+for i, embeddingfile in enumerate(options.embedding):
+    print >> sys.stderr, "Reading Embedding file: %s" % embeddingfile
+    word_to_embedding.append({})
+    assert len(word_to_embedding) == i+1
+    for l in myopen(embeddingfile):
+        sp = string.split(l)
+        word_to_embedding[i][sp[0]] = [float(v)*options.embeddingscale for v in sp[1:]]
+
+assert len(word_to_embedding) == 0
 
 
 if options.dev: workdir = join(BASEDIR, "work/%s/dev/" % options.name)
