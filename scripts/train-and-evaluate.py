@@ -87,7 +87,7 @@ target_is_true = [0] * len(EVAL_FILENAMES)
 prediction_is_true = [0] * len(EVAL_FILENAMES)
 
 scorefile = join(workdir, "evaluation.l2-%s.txt" % (options.l2))
-if os.path.exists(scorefil):
+if os.path.exists(scorefile):
     print >> sys.stderr, "%s exists. STOPPING" % scorefile
 
 # Generate features
