@@ -1,2 +1,53 @@
 # Bag-of-words
+# dev: l2=0
+#   Precision: 24.39
+#   Recall: 14.49
+#   F-measure: 18.18
+# test:
+# Mean Precision: 30.40
+# Mean Recall: 11.67
+# Mean F-measure: 16.72
 dbidispatch --exp_dir="" ./scripts/train-and-evaluate.py --name bag-of-words "--l2 {{1,0.1,0.01,0.001,0.0001,0}}"
+./scripts/train-and-evaluate.py --test --name bag-of-words --l2 0
+
+# Bag-of-words, with balanced example sets
+# dev: l2=1
+# Precision: 46.34
+# Recall: 9.18
+# F-measure: 15.32
+# Mean Precision: 28.27
+# Mean Recall: 7.91
+# Mean F-measure: 12.27
+dbidispatch --exp_dir="" ./scripts/train-and-evaluate.py --balance-examples --name bag-of-words.balance "--l2 {{1,0.1,0.01,0.001,0.0001,0}}"
+dbidispatch --exp_dir="" ./scripts/train-and-evaluate.py --balance-examples --name bag-of-words.balance "--l2 {{10,100}}"
+./scripts/train-and-evaluate.py --balance-examples --test --name bag-of-words.balance --l2 1
+
+# Bag-of-words, with balanced example sets, and brown 100
+dbidispatch --exp_dir="" ./scripts/train-and-evaluate.py --dev --balance-examples --name brown100.bag-of-words.balance -b representations/brown-rcv1.clean.tokenized-CoNLL03.txt-c100-freq1.txt "--l2 {{100,10,1,0.1,0.01,0.001,0.0001,0.00001,0.000001,0.0000001,0}}"
+
+# Bag-of-words, unbalanced, and brown 100
+dbidispatch --exp_dir="" ./scripts/train-and-evaluate.py --dev --dont-balance-examples --name brown100.bag-of-words.unbalanced -b representations/brown-rcv1.clean.tokenized-CoNLL03.txt-c100-freq1.txt "--l2 {{100,10,1,0.1,0.01,0.001,0.0001,0.00001,0.000001,0.0000001,0}}"
+
+# Bag-of-words, with balanced example sets, and brown 1000
+# dev: evaluation.l2-0.txt 
+# Precision: 26.61
+# Recall: 14.01
+# F-measure: 18.35
+# test:
+# Mean Precision: 26.01
+# Mean Recall: 10.29
+# Mean F-measure: 14.63
+dbidispatch --exp_dir="" ./scripts/train-and-evaluate.py --dev --balance-examples --name brown1000.bag-of-words.balance -b representations/brown-rcv1.clean.tokenized-CoNLL03.txt-c1000-freq1.txt "--l2 {{100,10,1,0.1,0.01,0.001,0.0001,0.00001,0.000001,0.0000001,0}}"
+./scripts/train-and-evaluate.py --test --balance-examples --name brown1000.bag-of-words.balance -b representations/brown-rcv1.clean.tokenized-CoNLL03.txt-c1000-freq1.txt --l2 0
+
+# Bag-of-words, unbalanced, and brown 1000
+# dev: $ less evaluation.l2-0.0001.txt 
+# Precision: 28.41
+# Recall: 12.08
+# F-measure: 16.95
+# test:
+# Mean Precision: 27.78
+# Mean Recall: 9.05
+# Mean F-measure: 13.55
+dbidispatch --exp_dir="" ./scripts/train-and-evaluate.py --dev --dont-balance-examples --name brown1000.bag-of-words.unbalanced -b representations/brown-rcv1.clean.tokenized-CoNLL03.txt-c1000-freq1.txt "--l2 {{100,10,1,0.1,0.01,0.001,0.0001,0.00001,0.000001,0.0000001,0}}"
+./scripts/train-and-evaluate.py --test --dont-balance-examples --name brown1000.bag-of-words.unbalanced -b representations/brown-rcv1.clean.tokenized-CoNLL03.txt-c1000-freq1.txt --l2 0.0001
