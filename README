@@ -40,6 +40,8 @@ Download data:
     cd test/
     wget http://www.sigkdd.org/kdd2005/Labeled800Queries.zip
     unzip Labeled800Queries.zip
+    cp labeler2.txt.new labeler2.txt
+# Last line is necessary because of inconsistent formatting in one line.
 
     
 Download word representations:

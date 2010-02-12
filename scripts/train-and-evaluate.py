@@ -28,7 +28,8 @@ if options.dev:
     TRAIN_FILENAME = join(BASEDIR, "data/train/CategorizedQuerySample.train-partition.txt")
     EVAL_FILENAMES = [join(BASEDIR, "data/train/CategorizedQuerySample.dev-partition.txt")]
 else:
-    assert 0
+    TRAIN_FILENAME = join(BASEDIR, "data/train/CategorizedQuerySample.txt")
+    EVAL_FILENAMES = [join(BASEDIR, "data/test/labeler1.txt"),join(BASEDIR, "data/test/labeler2.txt"),join(BASEDIR, "data/test/labeler3.txt")]
 
 all_labels, origlabel_to_newlabel = None, None
 def read_labels():
@@ -57,7 +58,9 @@ def read_labeled_queries(filename):
     for e in open(filename):
         v = string.split(string.strip(e), "\t")
         query = v[0]
+#        print >> sys.stderr, query
         labels = [origlabel_to_newlabel[string.strip(l)] for l in v[1:]]
+#        print >> sys.stderr, query, labels
         examples.append((query, labels))
     return examples
 
