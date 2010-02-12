@@ -86,6 +86,10 @@ target_is_prediction = [0] * len(EVAL_FILENAMES)
 target_is_true = [0] * len(EVAL_FILENAMES)
 prediction_is_true = [0] * len(EVAL_FILENAMES)
 
+scorefile = join(workdir, "evaluation.l2-%s.txt" % (options.l2))
+if os.path.exists(scorefil):
+    print >> sys.stderr, "%s exists. STOPPING" % scorefile
+
 # Generate features
 for l in all_labels:
     featurestrainfile = join(workdir, "features.train.l2-%s.%s.txt" % (options.l2, l))
@@ -138,7 +142,6 @@ for l in all_labels:
             if p == 1: prediction_is_true[i] += 1
 #            print >> sys.stderr, target_is_prediction[i], target_is_true[i], prediction_is_true[i]
 
-scorefile = join(workdir, "evaluation.l2-%s.txt" % (options.l2))
 totprc = 0.
 totrcl = 0.
 totfms = 0.
