@@ -1,0 +1,2 @@
+# Bag-of-words
+dbidispatch --exp_dir="" ./scripts/train-and-evaluate.py --name bag-of-words "--l2 {{1,0.1,0.01,0.001,0.0001,0}}"
